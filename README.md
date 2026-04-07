@@ -46,6 +46,3 @@ Each folder contains solutions for problems of the respective difficulty level.
 ---
 
 ⭐ If you like this repository, consider giving it a **star**.
-
-
-
