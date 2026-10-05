@@ -103,45 +103,63 @@
 
 //Solution
 
-import java.util.*;
  
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        
-        while (t-- > 0) {
-            int n = sc.nextInt();
-            int m = sc.nextInt();
+import java.util.ArrayList;
+import java.util.Scanner;
  
-            long ans = Long.MIN_VALUE;
+public class codeforces {
  
-            PriorityQueue<Long> pq =
-                    new PriorityQueue<>(Collections.reverseOrder());
+	public static void main(String[] args) {
+		Scanner scn  = new Scanner(System.in);
+		
+		int t = scn.nextInt();
+		
+		while(t-- > 0) {
+			int n = scn.nextInt();
+			
+			int[] ori = new int[n];
+			
+			for(int i = 0; i < n; i++) {
+				ori[i] = scn.nextInt();
+			}
+			
+			ArrayList<Integer> list = new ArrayList<>();
+			
+			for(int i = n - 1; i >= 0 ;i--) {
+				if(ori[i] == i + 1) continue;
+				else {
+					list.add(ori[i]);
+				}
+			}
+			
+			int s = list.size();
+			
+			int i = 0; 
+			int j = s - 1;
+			
+			while(i <= j) {
+				if(ori[i] > ori[j]) {
+					int temp = ori[i];
+					ori[i] = ori[j];
+					ori[j] = temp;
+				}
+				i++;
+				j--;
+			}
+			
+			boolean f = true;
+			for(int k = 1; k < s; k++) {
+				if(list.get(k) < list.get(k - 1)) { 
+					f = false;
+					System.out.println("No");
+					break;
+				}
+			}
+			
+			if(f)System.out.println("Yes");
+			
+		}
+	}
  
-            long s = 0;
- 
-            for (int i = 0; i < n; i++) {
- 
-                long x = sc.nextLong();
- 
-                if (pq.size() == m - 1) {
- 
-                    long temp = (long) m * x - s;
- 
-                    ans = Math.max(ans, temp);
-                }
- 
-                pq.add(x);
-                s += x;
-                if (pq.size() > m - 1) {
-                    s -= pq.poll();
-                }
-            }
- 
-            System.out.println(ans);
-        }
- 
-        sc.close();
-    }
+}
 }
