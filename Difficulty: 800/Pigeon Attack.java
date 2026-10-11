@@ -1,0 +1,173 @@
+//Problem
+    
+    /*Chef is tired of pigeons invading his balcony, and so decides to put up a net to keep them out.
+    
+    It takes 
+    N
+    N minutes of work to put up the net.
+    However, the pigeons won't leave Chef alone - every 
+    K
+    K-th minute, they'll fly onto the balcony and annoy Chef, leaving him unable to work.
+    
+    That is, on minutes 
+    K
+    ,
+    2
+    K
+    ,
+    3
+    K
+    ,
+    …
+    K,2K,3K,… Chef is unable to progress putting up the net.
+    
+    How many minutes in total, including delays, will Chef need to finish putting up the net?
+    
+    Input Format
+    The first line of input will contain a single integer 
+    T
+    T, denoting the number of test cases.
+    Each test case consists of a single line of input, containing two space-separated integers 
+    N
+    N and 
+    K
+    K.
+    Output Format
+    For each test case, output on a new line the total number of minutes needed for the net to be put up.
+    
+    Constraints
+    1
+    ≤
+    T
+    ≤
+    10
+    4
+    1≤T≤10 
+    4
+     
+    1
+    ≤
+    N
+    ≤
+    100
+    1≤N≤100
+    2
+    ≤
+    K
+    ≤
+    100
+    2≤K≤100
+    Sample 1:
+    Input
+    Output
+    4
+    3 2
+    5 3
+    4 10
+    7 4
+    5
+    7
+    4
+    9
+    Explanation:
+    Test case 
+    1
+    1: Chef needs 
+    N
+    =
+    3
+    N=3 minutes and the pigeons will show up every second minute, i.e. minutes 
+    2
+    ,
+    4
+    ,
+    6
+    ,
+    …
+    2,4,6,…
+    
+    Minute 
+    1
+    1: Chef will do some work.
+    Minute 
+    2
+    2: Chef is unable to work due to pigeons.
+    Minute 
+    3
+    3: Chef will do some work.
+    Minute 
+    4
+    4: Chef is unable to work due to pigeons.
+    Minute 
+    5
+    5: Chef will do some work.
+    This is the third minute of work, so the net is put up. The answer is hence 
+    5
+    5.
+    Test case 
+    2
+    2: Chef needs 
+    N
+    =
+    5
+    N=5 minutes and the pigeons will show up every third minute, i.e. minutes 
+    3
+    ,
+    6
+    ,
+    9
+    ,
+    …
+    3,6,9,…
+    Chef can work on minutes 
+    1
+    ,
+    2
+    ,
+    4
+    ,
+    5
+    ,
+    7
+    1,2,4,5,7 to put up the net; so the answer is 
+    7
+    7.
+    
+    Test case 
+    3
+    3: Four minutes are needed, while the pigeons will show up every 
+    10
+    10-th minute. The net can be fully put up before the pigeons show up for the first time; needing only 
+    4
+    4 minutes.*/
+
+//Solution
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner scn = new Scanner(System.in);
+		
+		int t = scn.nextInt();
+		
+		while(t-- > 0){
+		    int n = scn.nextInt();
+		    int k = scn.nextInt();
+		    
+		    int ans = 0;
+		    while(n > 0){
+		        if(ans % k != 0){
+		            n--;
+		        }
+		        ans++;
+		    }
+		    ans--;
+		    System.out.println(ans);
+		}
+	}
+}
